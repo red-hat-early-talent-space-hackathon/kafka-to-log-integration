@@ -40,7 +40,7 @@ https://github.com/mkossatz/messaging_with_ocp_amq_streams
 3. Deploy the integration
 
     ```Shell
-    kamel run KafkaConsumer.java --configmap=kafka-to-log-integration.props
+    kamel run KafkaToLogIntegration.java --config configmap:kafka-to-log-integration.props
     ```
 
 4. Check the state of the deployment
