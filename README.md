@@ -34,13 +34,13 @@ https://github.com/mkossatz/messaging_with_ocp_amq_streams
 2. Create a ConfigMap on OpenShift, which contains the integrations configuration
 
     ```Shell
-    oc create configmap camelk-integration-for-amq-streams.props  --from-file=examples/kafka/application.properties
+    oc create configmap kafka-to-log-integration.props  --from-file=application.properties
     ```
 
 3. Deploy the integration
 
     ```Shell
-    kamel run KafkaConsumer.java --configmap=camelk-integration-for-amq-streams.props
+    kamel run KafkaConsumer.java --configmap=kafka-to-log-integration.props
     ```
 
 4. Check the state of the deployment
