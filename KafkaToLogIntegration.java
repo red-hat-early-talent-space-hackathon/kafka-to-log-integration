@@ -1,6 +1,6 @@
 import org.apache.camel.builder.RouteBuilder;
 
-public class KafkaConsumer extends RouteBuilder {
+public class KafkaToLogIntegration extends RouteBuilder {
   @Override
   public void configure() throws Exception {
 	log.info("About to start route: Kafka Server -> Log ");
