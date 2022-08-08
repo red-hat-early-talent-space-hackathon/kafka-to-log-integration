@@ -1,36 +1,13 @@
-# amq_streams_camelk_integration
+# kafka-to-log-integration-example
 
 ## Prerequisites
 
-- OpenShift CLI (oc) is installed
-  <br/> (see here https://docs.openshift.com/container-platform/4.8/cli_reference/openshift_cli/getting-started-cli.html)
-- Camel-K CLI (kamel) is installed
-  <br/> (see here https://access.redhat.com/documentation/en-us/red_hat_integration/2020-q4/html-single/deploying_camel_k_integrations_on_openshift/index#installing-camel-k-client-tool)
-
-The following Camel-K integration required a Kafka cluster to be available. 
-Check the following repository to see how to create one on OpenShift:
-https://github.com/mkossatz/messaging_with_ocp_amq_streams
-
-
-## Install Camel-K Operator
-
-1. Define OpenShift namespace in ops/camelk-operator.yaml
-2. Apply the Camel-K Operator configuration 
-<br/> (make sure you are in the correct namespace)
-
-    ```Shell
-    oc apply -f ops/camelk-operator.yaml
-    ```
-
-3. Review the pods state to see when the operator is running
-
-    ```Shell
-    oc get pods -w
-    ```
+- OpenShift CLI (oc) is installed locally
+- Camel-K CLI (kamel) is installed locally
 
 ## Deploy the Integration
 
-1. Update any configurations necessary in the applications.properties file (should work by default)
+1. Update any configurations necessary in the applications.properties file (probably just the topics you want to consume from)
 2. Create a ConfigMap on OpenShift, which contains the integrations configuration
 
     ```Shell
@@ -49,8 +26,10 @@ https://github.com/mkossatz/messaging_with_ocp_amq_streams
     kamel get
     ```
 
+    Note: The CamelK operator might take some time to build the integration. Wait for it to no longer say "Building Kit" - it needs to say "Running".
+
 5. Inspect the logs of the integration to see incoming messages
 
     ```Shell
-    kamel log kafka-consumer
+    kamel log kafka-to-log-integration
     ```
